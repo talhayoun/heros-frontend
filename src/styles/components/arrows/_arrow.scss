@@ -1,0 +1,17 @@
+.arrow-right,
+.arrow-left{
+  display: block;
+  margin: 30px auto;
+  width: 25px;
+  height: 25px;
+  border-top: 5px solid #fff;
+  border-left: 5px solid #fff;
+  cursor: pointer;
+}
+.arrow-right{
+ transform: rotate(135deg);
+}
+
+.arrow-left{
+ transform: rotate(-45deg);
+}

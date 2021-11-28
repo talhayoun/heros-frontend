@@ -1,0 +1,27 @@
+.heroes-list{
+    background-image: linear-gradient(to bottom, #3c5985, #423f5f, #36293b, #21171e, #000000);
+    border-radius: 10px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    width: 80%;
+    margin: 0 auto;
+    padding: 1% 5%;
+    height: 635px;
+    h1{
+        color: #fff;
+        font-family: cursive;
+    }
+
+    .heroes-list-container{
+        height: 80%;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &::-webkit-scrollbar{
+            width: 0px;
+        }
+    }
+}

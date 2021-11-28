@@ -1,0 +1,52 @@
+.form{
+    width: 550px;
+    padding: 1% 3%;
+    padding-bottom: 60px;
+    border-radius: 8px;
+    border-right: 30px solid $myLightBlue;
+    background: #fff;
+
+    h1{
+        color: $myLightBlue;
+        font-size: 24px;
+        font-weight: 700;
+        margin: 40px 0px;
+    }
+    div{
+        margin-bottom: 20px;
+        label{
+            display: block;
+            font-size: 12px;
+            color: $myBlack;
+            margin-bottom: 5px;
+            letter-spacing: 0.1em;
+        }
+        input{
+            height: 40px;
+            width: 100%;
+            background: #eee;
+            outline: none;
+            border:none;
+            border-radius: 4px;
+            padding: 12px 20px;
+        }
+    }
+    button{
+        width: 100%;       
+        height: 40px;
+        margin-top: 20px;
+        background-color: $myLightBlue;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        outline: none;
+        font-family: inherit;
+
+    }
+    .form-sign-field{
+        font-size: 14px;
+        cursor: pointer;
+        margin-bottom: 0px;
+    }
+}

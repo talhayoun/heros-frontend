@@ -1,0 +1,61 @@
+.herostable{
+    height: 100%;
+    position: relative;
+    .arrow-right{
+        position: absolute;
+        right: 0;
+        top: 35%;
+    }
+    .arrow-left{
+        position: absolute;
+        top: 35%;
+        left: -35px;
+    }
+    .arrow-disabled{
+        border-top: 5px solid rgb(104, 104, 104);
+        border-left: 5px solid rgb(104, 104, 104);
+        cursor: default;
+    }
+    .herostable-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 20px;
+        height: 100%;
+        width: 100%;
+    }
+
+    .hero-card{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        width: 300px;
+        height: 300px;
+
+        .hero-details-container{
+            grid-row-start: 1;
+            grid-row-end: 3;
+            grid-column-start: 1;
+            grid-column-end: 3;
+
+            .hero-details-header span{
+                display: none;
+            }
+            .hero-details{
+                .hero-details-ability{
+                    display: none;
+                }
+            }
+        }
+
+        .hero-image{
+            height: 80px;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            width: 100px;
+            margin: 0 auto;
+            img{
+                max-height: 100px;
+            }
+        }
+        
+    }
+}

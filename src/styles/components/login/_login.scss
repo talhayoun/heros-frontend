@@ -1,0 +1,13 @@
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    // background: linear-gradient(45deg,  rgba(66, 183, 245,0.8) 0%,rgba(66, 245, 189,0.4) 100%);
+    background-image: url("../../images/background.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: -1;
+}

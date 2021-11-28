@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+
+html,body{
+    margin: 0px;
+    font-family:"Roboto, sans-serif";
+}
+
+.error-message{
+    color: red;
+    font-size: 14px;
+}
+.success-message{
+    color: #3c763d;
+}
