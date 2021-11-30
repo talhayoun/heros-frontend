@@ -5,21 +5,25 @@ import { FiLogOut } from 'react-icons/fi';
 import { useNavigate } from 'react-router';
 import { LoginContext } from '../../context/LoginContext';
 import { logoutAction } from '../../actions/userActions';
+import { TrainerContext } from '../../context/TrainerContext';
+import { clearTrainerDataAction } from '../../actions/trainerActions';
 
 const NavBar = ({ setIsDashboardVisible }) => {
-    const [tags, setTags] = useState(["", "", ""]);
+    const [isTagVisible, setIsTagVisible] = useState([false, false, false]);
 
     const navigate = useNavigate();
     const { dispatchUserData } = useContext(LoginContext);
+    const { dispatchTrainerData } = useContext(TrainerContext);
 
-    const handleTags = (msg, index) => {
-        let copyTags = [...tags];
-        copyTags[index] = msg;
-        setTags(copyTags)
+    const handleTagStatus = (index, value) => {
+        let copyTags = [...isTagVisible];
+        copyTags[index] = value;
+        setIsTagVisible(copyTags)
     }
 
     const handleLogout = () => {
         dispatchUserData(logoutAction())
+        dispatchTrainerData(clearTrainerDataAction());
         navigate("/login")
     }
     return (
@@ -28,28 +32,28 @@ const NavBar = ({ setIsDashboardVisible }) => {
                 <div>
                     <MdSpaceDashboard
                         onClick={() => setIsDashboardVisible(true)}
-                        onMouseEnter={() => handleTags('Dashboard', 0)}
-                        onMouseLeave={() => handleTags("", 0)}
+                        onMouseEnter={() => handleTagStatus(0, true)}
+                        onMouseLeave={() => handleTagStatus(0, false)}
                     />
-                    {tags[0] && <p className="navbar-icons-msg">{tags[0]}</p>}
+                    {isTagVisible[0] && <p className="navbar-icons-msg">Dashboard</p>}
                 </div>
                 <div>
                     <GiPointySword
                         onClick={() => setIsDashboardVisible(false)}
-                        onMouseEnter={() => handleTags('Heros', 1)}
-                        onMouseLeave={() => handleTags("", 1)}
+                        onMouseEnter={() => handleTagStatus(1, true)}
+                        onMouseLeave={() => handleTagStatus(1, false)}
                     />
-                    {tags[1] && <p className="navbar-icons-msg">{tags[1]}</p>}
+                    {isTagVisible[1] && <p className="navbar-icons-msg">Heroes</p>}
                 </div>
             </div>
             <div className="navbar-setting">
                 <FiLogOut
                     onClick={handleLogout}
                     style={{ color: 'red', cursor: 'pointer' }}
-                    onMouseEnter={() => handleTags('Logout', 2)}
-                    onMouseLeave={() => handleTags("", 2)}
+                    onMouseEnter={() => handleTagStatus(2, true)}
+                    onMouseLeave={() => handleTagStatus(2, false)}
                 />
-                {tags[2] && <p className="navbar-icons-msg">{tags[2]}</p>}
+                {isTagVisible[2] && <p className="navbar-icons-msg">Logout</p>}
             </div>
         </div>
     );

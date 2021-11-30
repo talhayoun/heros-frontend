@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { changeHerosDisplayAction } from '../../actions/trainerActions';
 import { TrainerContext } from '../../context/TrainerContext';
 import HeroCard from '../heroes/HeroCard';
@@ -11,17 +11,20 @@ const DashboardContent = ({ setResponse }) => {
         dispatchTrainerData(changeHerosDisplayAction(hero))
     }
 
-    useEffect(() => {
-        console.log(trainerData)
-    }, [trainerData])
 
     return (
         <div className="dashboard-content">
-            {trainerData.heroOne && <HeroCard data={trainerData.heroOne} setResponse={setResponse} />}
-            {trainerData.herosList && <HeroesPreviewList heroes={trainerData.herosList}
-                onClickHero={handleHeroDisplay}
-            />}
-            {trainerData.heroTwo && <HeroCard data={trainerData.heroTwo} setResponse={setResponse} />}
+            {trainerData.herosList.length > 0 ?
+                <>
+                    {trainerData.heroOne && <HeroCard data={trainerData.heroOne} setResponse={setResponse} />}
+                    {trainerData.herosList && <HeroesPreviewList heroes={trainerData.herosList}
+                        onClickHero={handleHeroDisplay}
+                    />}
+                    {trainerData.heroTwo && <HeroCard data={trainerData.heroTwo} setResponse={setResponse} />}
+                </>
+                :
+                <p className="dashboard-content-noheros">No heros to display</p>
+            }
         </div>
     );
 };

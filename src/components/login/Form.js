@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import InputValidation from './InputValidation';
 
 const Form = ({ template }) => {

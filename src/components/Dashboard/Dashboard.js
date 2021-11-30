@@ -1,9 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { changeHerosDisplayAction } from '../../actions/trainerActions';
 import { LoginContext } from '../../context/LoginContext';
-import { TrainerContext } from '../../context/TrainerContext';
-import HeroCard from '../heroes/HeroCard';
-import HeroesPreviewList from '../heroes/HeroesPreviewList';
 import HerosTable from '../heroes/HerosTable';
 import DashboardContent from './DashboardContent';
 import NavBar from './NavBar';
@@ -13,13 +9,6 @@ const Dashboard = () => {
     const [isDashboardVisible, setIsDashboardVisible] = useState(true);
 
     const { userData } = useContext(LoginContext);
-    const { trainerData, dispatchTrainerData } = useContext(TrainerContext);
-
-    const handleHeroDisplay = (hero) => {
-        dispatchTrainerData(changeHerosDisplayAction(hero))
-    }
-
-
 
     return (
         <>

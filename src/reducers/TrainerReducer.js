@@ -1,4 +1,4 @@
-import { CHANGE_DISPLAY, HERO_TRAINING, SET_ALL_HEROS, SET_HEROS } from "../actions/trainerActions";
+import { CHANGE_DISPLAY, CLEAR_DATA, HERO_TRAINING, SET_ALL_HEROS, SET_HEROS } from "../actions/trainerActions";
 
 export const initialTrainerState = {
     allHeros: [],
@@ -14,14 +14,17 @@ const TrainerReducer = (state, action) => {
             return { ...state, allHeros: action.heros };
         case SET_HEROS:
             let { heros } = action
-            let herosList = [];
-            for (let i = 2; i < heros.length; i++) {
-                herosList.push(heros[i].hero);
+            if (heros.length > 0) {
+                let herosList = [];
+                for (let i = 2; i < heros.length; i++) {
+                    herosList.push(heros[i].hero);
+                }
+                herosList = herosList.sort((cHero, nHero) => cHero.currentPower.$numberDecimal - nHero.currentPower.$numberDecimal)
+                return { ...state, heroOne: action.heros[0].hero, heroTwo: action.heros[1].hero, herosList }
+            } else {
+                return { ...state };
             }
-            herosList = herosList.sort((cHero, nHero) => cHero.currentPower.$numberDecimal - nHero.currentPower.$numberDecimal)
-            return { ...state, heroOne: action.heros[0].hero, heroTwo: action.heros[1].hero, herosList }
         case CHANGE_DISPLAY:
-            console.log("here")
             let copyHeros = [...state.herosList];
             copyHeros = copyHeros.filter((curHero) => curHero._id !== action.hero._id);
 
@@ -49,6 +52,8 @@ const TrainerReducer = (state, action) => {
 
             console.log(heroOneState, heroTwoState)
             return { ...state, heroOne: heroOneState, heroTwo: heroTwoState }
+        case CLEAR_DATA:
+            return { allHeros: [], herosList: [], heroOne: "", heroTwo: "", changeHeroNum: 1 }
         default:
             return { ...state };
 

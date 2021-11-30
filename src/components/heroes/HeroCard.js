@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { heroTrainingAction } from '../../actions/trainerActions';
 import { TrainerContext } from '../../context/TrainerContext';
@@ -7,7 +7,7 @@ import Label from './Label';
 import SuitColor from './SuitColor';
 
 const HeroCard = ({ data, setResponse }) => {
-    const { ability, name, image, suitColor, currentPower, lastTrainPower, createdAt, numOfTrains } = data;
+    const { ability, name, image, suitColor, currentPower, lastTrainPower, createdAt, trainingCount } = data;
 
     const { dispatchTrainerData } = useContext(TrainerContext);
     const navigate = useNavigate();
@@ -42,14 +42,14 @@ const HeroCard = ({ data, setResponse }) => {
                     <div className="hero-details-labels">
                         <Label title="CP" value={currentPower?.$numberDecimal.substr(0, 5) || '-'} />
                         <Label title="SP" value={lastTrainPower?.$numberDecimal.substr(0, 5) || '-'} />
-                        <Label title="Num of trains" value={numOfTrains} />
+                        <Label title="Num of trains" value={trainingCount} />
                     </div>
                     <div className="hero-details-ability">
                         <Label title="Ability" value={ability?.toUpperCase()} />
                         <SuitColor title="Suit Color" colors={suitColor} />
                         <button
                             className="start-btn"
-                            // disabled={numOfTrains >= 5 ? true : false}
+                            // disabled={trainingCount >= 5 ? true : false}
                             onClick={handleTrainClick}
                         >
                             Train
@@ -58,7 +58,7 @@ const HeroCard = ({ data, setResponse }) => {
                 </div>
             </div>
             <div className="hero-image">
-                <img src={image} />
+                <img alt={name} src={image} />
             </div>
         </div>
     );
